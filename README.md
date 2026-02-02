@@ -1,73 +1,31 @@
-# React + TypeScript + Vite
+# Charity Campaign Template (React + TypeScript + Tailwind v4)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a frontend template for the Charity Dashboard. It is built to be modular and easily connected to a backend API.
 
-Currently, two official plugins are available:
+## 🛠 Tech Stack
+- **Framework:** React 18
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4 (configured via Vite plugin)
+- **Build Tool:** Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📂 Project Structure
+- `src/types.ts`: TypeScript interfaces defining the `Charity` data model.
+- `src/components/CharityCard.tsx`: The UI component for individual items. Handles "Time Ago" logic and dynamic progress circles.
+- `src/components/CharityCarousel.tsx`: A scrollable container that manages layout and navigation arrows.
+- `src/App.tsx`: The main entry point containing **Mock Data**.
 
-## React Compiler
+## 🚀 How to Integrate (For Backend Devs)
+1. **Data Connection:** - Open `src/App.tsx`.
+   - Replace the `templateCharities` array with a fetch call to your API.
+   - Ensure your API response matches the `Charity` interface in `src/types.ts`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. **Navigation:**
+   - The `CharityCard` component accepts an optional `onNavigate` prop. Pass your router logic (e.g., `useNavigate`) into this prop to handle clicks.
 
-## Expanding the ESLint configuration
+3. **Dynamic Dates:**
+   - The `uploadDate` field expects an ISO string (e.g., `"2026-02-02T10:00:00Z"`). The card automatically converts this to "X Days Ago".
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📦 Setup & Run
+```bash
+npm install
+npm run dev
