@@ -2,13 +2,12 @@ import type { Charity } from './types';
 import { CharityCarousel } from './components/CharityCarousel';
 
 // Import your local images
-// (Make sure these files exist in src/assets/)
 import gkidsImg from './assets/gkids.jpg';
 import bannerImg from './assets/banner.jpg';
 import kids1Img from './assets/kids1.jpg';
 
 // Helper to get a dynamic date (Today)
-// In a real app, this date comes from the database.
+// In the real app, this date comes from the database.
 const today = new Date().toISOString(); 
 
 const templateCharities: Charity[] = [

@@ -28,7 +28,7 @@ export const CharityCard: React.FC<CharityCardProps> = ({ data, onNavigate }) =>
   return (
     <div className="min-w-[320px] max-w-[350px] bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex-shrink-0 snap-center flex flex-col">
       
-      {/* IMAGE SECTION (Category Badge Removed) */}
+      {/* IMAGE SECTION */}
       <div className="relative h-48">
         <img 
           src={data.image} 
